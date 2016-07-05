@@ -19,12 +19,6 @@ RUN mkdir -p /var/www/html \
 RUN chown -R www-data:www-data /var/www \
     && rm /var/www/html/index.html
 
-#RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
-#RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
-#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-#RUN rm /etc/nginx/sites-enabled/*
-#ADD dokuwiki.conf /etc/nginx/sites-enabled/
-
 ADD mysql_wikkawiki.sql /root/mysql_wikkawiki.sql
 ADD supervisord.conf /etc/supervisord.conf
 
@@ -32,20 +26,4 @@ RUN service mysql start & \
     sleep 10s && \
     mysql -u root < /root/mysql_wikkawiki.sql
 
-
-#EXPOSE 80
-#VOLUME [ \
-#    "/var/www/data/pages", \
-#    "/var/www/data/meta", \
-#    "/var/www/data/media", \
-#    "/var/www/data/media_attic", \
-#    "/var/www/data/media_meta", \
-#    "/var/www/data/attic", \
-#    "/var/www/conf", \
-#    "/var/log" \
-#]
-
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-
-# wget http://wikkawiki.org/downloads/Wikka-1.3.7.zip
-# unzip Wikka-1.3.7.zip

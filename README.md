@@ -1,13 +1,18 @@
 # WikkaWiki docker container
-![WikkaWiki.](images/wikka_logo.jpg)
+![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikka_logo.jpg)
 
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MySQL to store pages.
 [[http://wikkawiki.org/HomePage]]
-## To run image:
+## To run the image:
+
+### To run the image new Install:
+The default option is run a new WikkaWiki database, with the next DB/user/password options.
 
 ~~~~bash
 docker run -d -p 80:80 oems/wikkawiki
 ~~~~
+
+With this default option, you run the database into your container, then if you delete your container you delete your database also, remember to make backup.
 
 The default database:
 ~~~~text
@@ -23,7 +28,6 @@ default password:
 ~~~~text
 wikka-password
 ~~~~
-
 
 ## Mounting the database file volume
 
