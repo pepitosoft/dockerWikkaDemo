@@ -43,6 +43,12 @@ Using your own database and your own configuration file.
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkawiki
 ~~~~
 
+Using your own uploads and your plugins also:
+
+~~~~bash
+docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka.config.php -v $PWD/uploads:/var/www/html/uploads -v $PWD/plugins:/var/www/html/plugins oems/wikkawiki
+~~~~
+
 ## Build your own:
 
 Modify the mysql_wikkawiki.sql with your own user and database definitions and build the image:

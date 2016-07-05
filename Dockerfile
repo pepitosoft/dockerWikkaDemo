@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER OEMS <oscaremu@gmaiil.com>
 
 RUN apt-get update && \
-    apt-get install -y curl supervisor php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2 mysql-server
+    apt-get install -y curl supervisor git php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2 mysql-server
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -21,9 +21,10 @@ RUN chown -R www-data:www-data /var/www \
 
 ADD mysql_wikkawiki.sql /root/mysql_wikkawiki.sql
 ADD supervisord.conf /etc/supervisord.conf
+ADD fix_perm.sh /root/fix_perm.sh
 
 RUN service mysql start & \
-    sleep 10s && \
-    mysql -u root < /root/mysql_wikkawiki.sql
+    sleep 10s  \ 
+    && mysql -u root < /root/mysql_wikkawiki.sql 
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
