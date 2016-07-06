@@ -33,7 +33,7 @@ wikka-password
 ~~~~
 With this default option, you run the database into the container, then **if you delete your container you delete your database also**, remember to make backup.
 
-## Using your own database files
+### Using your own database files
 
 The internal database use MySql 5.5, using your own database (make backup of your original database before to load this docker):
 
@@ -41,7 +41,7 @@ The internal database use MySql 5.5, using your own database (make backup of you
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
 ~~~~
 
-## Using your own database and your own configuration file.
+### Using your own database and your own configuration file.
 
 You can use your own configuration options.
 
@@ -53,16 +53,18 @@ If you use a external database you dont need the mysql volume.
 ~~~~bash
 docker run -d -p 80:80 -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkawiki
 ~~~~
-## Using your own uploads and your plugins also:
+### Using your own uploads and your plugins also:
 
 ~~~~bash
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka.config.php -v $PWD/uploads:/var/www/html/uploads -v $PWD/plugins:/var/www/html/plugins oems/wikkawiki
 ~~~~
 
-## Build your own:
+### Build your own:
 
 Modify the mysql_wikkawiki.sql with your own user and database definitions and build the image:
 ~~~~bash
+git git@github.com:oemunoz/wikkawiki.git wikkawiki
+cd wikkawiki
 docker build -t "wikkawiki" .
 ~~~~
 
