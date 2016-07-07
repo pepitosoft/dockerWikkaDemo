@@ -46,7 +46,7 @@ docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
 You can use your own configuration options.
 
 ~~~~bash
-docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkawiki
+docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka/wikka.config.php oems/wikkawiki
 ~~~~
 If you use a external database you dont need the mysql volume.
 
@@ -56,7 +56,7 @@ docker run -d -p 80:80 -v $PWD/wikka.config.php:/var/www/html/wikka.config.php o
 ### Using your own uploads and your plugins also:
 
 ~~~~bash
-docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka.config.php -v $PWD/uploads:/var/www/html/uploads -v $PWD/plugins:/var/www/html/plugins oems/wikkawiki
+docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka/wikka.config.php -v $PWD/uploads:/var/www/html/wikka/uploads -v $PWD/plugins:/var/www/html/wikka/plugins oems/wikkawiki
 ~~~~
 
 ### Build your own:
@@ -70,7 +70,8 @@ docker build -t "wikkawiki" .
 
 ## History
 
-160705: Basic Initial Version.
+- 160705: Basic Initial Version.
+- 160707: WikkaWiki now uses /wikka not the root of apache, but works out of the box.
 
 ## Credits
 
