@@ -6,8 +6,8 @@ RUN apt-get update && \
 
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV WIKKAWIKI_VERSION 1.4.0-pre-md
-ENV MD5_CHECKSUM 119a2b9a90d27af57c67e94caefc0416
+ENV WIKKAWIKI_VERSION 1.4.0-pre-md-sqlite
+ENV MD5_CHECKSUM 45a11bdc84618a13d064a9127fdc0c77
 
 ADD https://github.com/pepitosoft/wikkademo/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/
 

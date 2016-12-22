@@ -1,13 +1,14 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`1.4.0-pre-md` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+-	[`1.4.0-pre-md-sqlite` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+-	[`1.4.0-pre-md` , `1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
 -	[`1.3.7-md` , `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
 
 # [WikkaWiki Markdown Demo docker container](https://github.com/pepitosoft/dockerWikkaDemo)
 
 ![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikka_logo.jpg)
 
-WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MySQL to store pages.
+WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MySQL or SqLite to store pages.
 [[http://wikkawiki.org/HomePage]]
 ## To run the image:
 
@@ -15,6 +16,16 @@ This is a resumed HowTo, for a long description follow the link to the [WikkaWik
 
 ### To run the default image (new Install):
 When you run this docker with the basic minimum options:
+
+```bash
+docker run -d -p 80:80 oems/wikkademo:1.4.0-pre-md-sqlite
+```
+
+- Run out of the box, to install WikkaWikki page.
+- Run the latest Version of WikkaWiki (1.4.0-pre), from [https://github.com/pepitosoft/wikkademo/tree/1.4.0-pre-md-sqlite](https://github.com/pepitosoft/wikkademo/tree/1.4.0-pre-md-sqlite)
+- Run with PHP 7 (Developer testing).
+- Support for Markdown with the handlers .md and /md.
+- A new WikkaWiki database over SqLite!!! (testing), the docker needs few memory.
 
 ```bash
 docker run -d -p 80:80 oems/wikkademo:1.4.0-pre-md
@@ -58,7 +69,7 @@ With this default option, you run the database into the container, then **if you
 
 ### Using your own database files
 
-The internal database use MySql 5.5, using your own database (make backup of your original database before to load this docker):
+The internal database use MySql or SqLite, using your own database (make backup of your original database before to load this docker):
 
 ~~~~bash
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkademo
@@ -103,6 +114,7 @@ docker build -t "wikkademo" .
 
 ## History
 
+- 161222: Added Markdown Handler and SqLite database support.
 - 160705: Basic Initial Version.
 - 160707: WikkaWiki now uses /wikka not the root of apache, but works out of the box.
 
