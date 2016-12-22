@@ -1,3 +1,7 @@
+# Supported tags and respective `Dockerfile` links
+
+-	[`1.3.7-md1` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+
 # [WikkaWiki Markdown Demo docker container](https://github.com/pepitosoft/dockerWikkaDemo)
 
 ![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikka_logo.jpg)
@@ -5,6 +9,8 @@
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MySQL to store pages.
 [[http://wikkawiki.org/HomePage]]
 ## To run the image:
+
+This is a resumed HowTo, for a long description follow the link to the [WikkaWiki](http://wikkawiki.org/Wikka-Docker).
 
 ### To run the default image (new Install):
 When you run this docker with the basic minimum options:

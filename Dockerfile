@@ -6,8 +6,8 @@ RUN apt-get update && \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV WIKKAWIKI_VERSION 1.3.5-m1
-ENV MD5_CHECKSUM 11f31352e708e1f8df835369283eb0d1
+ENV WIKKAWIKI_VERSION v1.3.7-md1
+ENV MD5_CHECKSUM bba0167b16316bb5cd69cc25b03d8b19
 ENV JOB "*/5 * * * * /root/fix_perm.sh"
 
 ADD https://github.com/pepitosoft/wikkademo/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/
@@ -31,6 +31,7 @@ RUN chown -R www-data:www-data /var/www \
 RUN service mysql start & \
     sleep 10s  \
     && mysql -u root < /root/mysql_wikkawiki.sql \
+    && service mysql start && sleep 10 \
     && tar -cvf /mysql_basic.tar /var/lib/mysql
 
 RUN (crontab -u root -l; echo "$JOB" ) | crontab -u root -
