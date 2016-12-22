@@ -1,6 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`1.3.7-md1` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+-	[`1.4.0-pre-md` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+-	[`1.3.7-md` , `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
 
 # [WikkaWiki Markdown Demo docker container](https://github.com/pepitosoft/dockerWikkaDemo)
 
@@ -16,12 +17,23 @@ This is a resumed HowTo, for a long description follow the link to the [WikkaWik
 When you run this docker with the basic minimum options:
 
 ```bash
-docker run -d -p 80:80 oems/wikkademo
+docker run -d -p 80:80 oems/wikkademo:1.4.0-pre-md
 ```
 
 - Run out of the box, to install WikkaWikki page.
-- Run the latest Version of WikkaWiki (1.3.7), from the website tar.gz.
+- Run the latest Version of WikkaWiki (1.4.0-pre), from [https://github.com/pepitosoft/wikkademo/tree/1.4.0-pre-md](https://github.com/pepitosoft/wikkademo/tree/1.4.0-pre-md)
+- Run with PHP 7 (Developer testing).
+- Support for Markdown with the handlers .md and /md.
+- A new WikkaWiki database over MySql 5.7 (testing), with the next DB/user/password options.
+
+```bash
+docker run -d -p 80:80 oems/wikkademo:1.3.7-md
+```
+
+- Run out of the box, to install WikkaWikki page.
+- Run the latest Version of WikkaWiki (1.3.7), from [https://github.com/pepitosoft/wikkademo/tree/v1.3.7-md](https://github.com/pepitosoft/wikkademo/tree/v1.3.7-md)
 - Run with PHP 5 (Developer tested).
+- Support for Markdown with the handlers .md and /md.
 - A new WikkaWiki database over MySql 5.5 (tested), with the next DB/user/password options.
 
 The default database:

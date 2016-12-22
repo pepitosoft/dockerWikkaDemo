@@ -1,14 +1,13 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER OEMS <oscaremu@gmaiil.com>
 
 RUN apt-get update && \
-    apt-get install -y curl supervisor git php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2 mysql-server wget
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl supervisor git php7.0 php7.0-sqlite php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2 mysql-server
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV WIKKAWIKI_VERSION v1.3.7-md1
-ENV MD5_CHECKSUM bba0167b16316bb5cd69cc25b03d8b19
-ENV JOB "*/5 * * * * /root/fix_perm.sh"
+ENV WIKKAWIKI_VERSION 1.4.0-pre-md
+ENV MD5_CHECKSUM 119a2b9a90d27af57c67e94caefc0416
 
 ADD https://github.com/pepitosoft/wikkademo/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/
 
@@ -33,7 +32,5 @@ RUN service mysql start & \
     && mysql -u root < /root/mysql_wikkawiki.sql \
     && service mysql start && sleep 10 \
     && tar -cvf /mysql_basic.tar /var/lib/mysql
-
-RUN (crontab -u root -l; echo "$JOB" ) | crontab -u root -
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
