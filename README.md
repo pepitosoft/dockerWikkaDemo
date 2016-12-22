@@ -1,4 +1,5 @@
-# WikkaWiki Markdown Demo docker container
+# [WikkaWiki Markdown Demo docker container](https://github.com/pepitosoft/dockerWikkaDemo)
+
 ![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikka_logo.jpg)
 
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MySQL to store pages.
@@ -52,11 +53,21 @@ You can use your own configuration options.
 ~~~~bash
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka/wikka.config.php oems/wikkademo
 ~~~~
-If you use a external database you dont need the mysql volume.
+
+If you use a external database (with a docker-compose setup for example) you dont need the mysql volume.
 
 ~~~~bash
 docker run -d -p 80:80 -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkademo
 ~~~~
+
+#### How to get de default an clean database from this docker.
+
+You can to extract the **default** database if you want to use this image into some docker-compose for example:
+
+~~~~bash
+docker run --rm -it -v $PWD/mysql_org:/var/lib/mysql oems/wikkademo sh -c "tar -xvf /mysql_basic.tar"
+~~~~
+
 ### Using your own uploads and your plugins also:
 
 ~~~~bash

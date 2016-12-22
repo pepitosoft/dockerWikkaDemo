@@ -30,7 +30,8 @@ RUN chown -R www-data:www-data /var/www \
 
 RUN service mysql start & \
     sleep 10s  \
-    && mysql -u root < /root/mysql_wikkawiki.sql
+    && mysql -u root < /root/mysql_wikkawiki.sql \
+    && tar -cvf /mysql_basic.tar /var/lib/mysql
 
 RUN (crontab -u root -l; echo "$JOB" ) | crontab -u root -
 
